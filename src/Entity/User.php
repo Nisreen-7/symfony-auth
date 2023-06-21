@@ -38,7 +38,7 @@ class User implements UserInterface,PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getPassword(): string
     {
@@ -46,7 +46,7 @@ class User implements UserInterface,PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @param int $password 
+     * @param string $password 
      * @return self
      */
     public function setPassword(string $password): self
