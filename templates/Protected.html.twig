@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Protected {% endblock %}
+
+{% block body %}
+
+<p class="mx-auto w-50">Bonjour : <span class="text-warning">{{app.User.email}}</span><a href="/logout"
+        class="btn btn-info">Logout</a></p>
+{% endblock %}

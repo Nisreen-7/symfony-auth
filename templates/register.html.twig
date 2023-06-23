@@ -1,29 +1,37 @@
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
+<div class="card mx-auto w-75 mt-5">
+    <div class="card-body">
+        <form method="post">
+            <h3 class="card-title text-primary shadow-lg">Inscription</h3>
 
-<form action="#" method="post" >
-    <h3>inscription</h3>
-    <div>
-        <label for="email" class="rounded"> Saisir votre email</label>
-        <input type="text" name="email" id="email" class="form-control">
-    </div>
-    <div>
-        <label for="password" class="rounded">Saisir votre password</label>
-        <input type="text" name="password" id="password" class="form-control">
-    </div>
-    <div>
-        <label for="repassword" class="rounded">ReSaisir votre password</label>
-        <input type="repassword" name="repassword" id="repassword" class="form-control">
-    </div>
-    <button class="btn btn-info">regiter</button>
+            {% if errors is defined and errors|length > 0 %}
+            {% for row in errors %}
+            <p class="text-danger">{{row}}</p>
+            {% endfor %}
+            {% endif %}
 
-</form>
-{% if message is defined %}
-<p>{{message}}</p>
-{% endif %}
+            <label for="email" class="rounded"> Saisir votre email</label>
+            <input type="text" name="email" id="email" class="form-control" required>
+
+
+            <label for="password" class="rounded">Saisir votre password</label>
+            <input type="text" name="password" id="password" class="form-control" required>
+
+
+            <label for="repassword" class="rounded">ReSaisir votre password</label>
+            <input type="repassword" name="repassword" id="repassword" class="form-control" required>
+
+            <button class="btn btn-primary mt-3">Register</button>
+            {% if message is defined %}
+            <p class="text-success">{{message}}</p>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
 
 {% endblock %}

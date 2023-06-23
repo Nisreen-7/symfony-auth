@@ -14,8 +14,8 @@ class UserRepository
 
 
         $connection = Database::getConnection();
-        $query = $connection->prepare("insert into user (id,email,password)VALUES(:id,:email,:password)");
-        $query->bindValue(':id', $data->getId());
+        $query = $connection->prepare("insert into user (email,password)VALUES(:email,:password)");
+       
         $query->bindValue(':email', $data->getEmail());
         $query->bindValue(':password', $data->getPassword());
 

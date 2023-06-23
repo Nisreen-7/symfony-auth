@@ -74,15 +74,15 @@ class User implements UserInterface,PasswordAuthenticatedUserInterface
     }
  public function getUserIdentifier():string{
 
-    return $this->getEmail();
+    return $this->email;
  }
  public function eraseCredentials(){
 
     
  }
- public function getRoles ():string{
+ public function getRoles ():array{
 
-    return "(['ROLE_USER'])";
+    return ['ROLE_USER'];
  }
 
  

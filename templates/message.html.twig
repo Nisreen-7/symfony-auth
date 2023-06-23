@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Message list {% endblock %}
+
+{% block body %}
+<div class="card mx-auto w-50 mt-5">
+    <div class="card-body">
+        <form method="post">
+            <h3 class="card-title text-danger shadow-lg bg-info">Message listes</h3>
+            {% for item in message %}
+            <p> <span class="text-warning fw-bold">User Id {{item.id}}</span> :{{item.content}} </p>
+            {% endfor %}
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
