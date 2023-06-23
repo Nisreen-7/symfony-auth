@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Message list {% endblock %}
+{% block title %} Protected {% endblock %}
 
 {% block body %}
+
+<p class="mx-auto w-50">Bonjour : <span class="text-warning">{{app.User.email}}</span> bienvenue dans notre forum</p>
 <div class="card mx-auto w-50 mt-5">
     <div class="card-body">
         <form method="post">
@@ -30,4 +32,16 @@
 </div>
 
 
+<div class="card mx-auto w-75 mt-5">
+    <div class="card-body">
+        <form method="post">
+            <h3 class="card-title">Message Form</h3>
+
+            <label for="content">Content</label>
+            <textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+
+            <button class="btn btn-primary mt-3">Add Message</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

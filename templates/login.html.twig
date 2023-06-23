@@ -4,24 +4,28 @@
 
 {% block body %}
 
-<div class="card mx-auto w-75 mt-5">
+<div class="card mx-auto w-50 mt-5">
     <div class="card-body">
         <form method="post">
             <h3 class="card-title">LogIn</h3>
+
             {% if error %}
             <div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
-            <div>
+
             <label for="email">Email:</label>
-            <input type="text" id="email" name="_username" value="{{ last_email }}"><br>
-        </div>
-        <div>
+            <input type="text" id="email" name="_username" value="{{ lastEmail }}" class="form-control">
+
             <label for="password">Password:</label>
-            <input type="password" id="password" name="_password">
-        </div>
-            <input type="hidden" name="_target_path" value="/Protected">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <input type="password" id="password" name="_password" class="form-control">
+
+
+            {# <input type="hidden" name="_target_path" value="/protected" class="form-control"> #}
+            <button type="submit" class="btn btn-primary mt-3">Login</button>
         </form>
+        <label for="pasdecompte">Vous n'avez pas un compte chez nous!?</label>
+
+        <a href="/regiter" class="btn btn-primary">Créer Un Compte</a>
     </div>
 </div>
 {% endblock body %}

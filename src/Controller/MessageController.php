@@ -12,34 +12,66 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MessageController extends AbstractController
 {
-    public function __construct(private MessageRepository $rep) {
-        
-    }
-    #[Route('/message')]
-    public function index(): Response
-    {
-       
-        return $this->render('message.html.twig', [
-            'controller_name' => 'MessageController',
-            'message'=> $this->rep->findAll(),
-        ]);
-    }
-    
-    #[Route('/add-message')]
-    public function addMessage(Request $request): Response
-    {
-      $formdata=$request->request->all();
-      /**
-       * @var User
-       */
-      $user=$this->getUser();
+  public function __construct(private MessageRepository $rep)
+  {
 
-      if(!empty($formdata)){
-        $message=new Message($formdata['content'],$user->getId());
-        $this->rep->persist($message);
-        return $this->redirect('/message');
-      }
-        return $this->render('add-message.html.twig', [
-        ]);
+  }
+  #[Route()]
+  public function index(): Response
+  {
+
+    return $this->render('message.html.twig',[
+      'controller_name' => 'MessageController',
+      'message' => $this->rep->findAll(),
+    ]);
+  }
+
+
+
+  #[Route('/add-message')]
+  public function addMessage(Request $request): Response
+  {
+    $formdata = $request->request->all();
+    /**
+     * @var User
+     */
+    $user = $this->getUser();
+
+    if (!empty($formdata)) {
+      // $message=new Message($formdata['content'],$user->getId());
+
+      $message = new Message($formdata['content'], $user);
+      $this->rep->persist($message);
+      return $this->redirect('/');
     }
+    return $this->render('add-message.html.twig', [
+    ]);
+  }
+
+
+
+
+  #[Route("/delete-message/{id}")]
+  public function removeMessage(int $id): Response
+  {
+    $message = $this->rep->findById($id);
+    /**
+     * @var User
+     */
+    $user = $this->getUser();
+    if ($user->getId() == $message?->getUser()->getId()) {
+      $this->rep->delete($id);
+    }
+
+    return $this->redirect("/");
+  }
+
+  #[Route("/forum")]
+  public function forum()
+  {
+    return $this->render('forum.html.twig', [
+
+    ]);
+  }
+
 }

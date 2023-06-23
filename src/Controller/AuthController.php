@@ -56,17 +56,18 @@ class AuthController extends AbstractController
         // last username entered by the user
         $lastEmail = $authenticationUtils->getLastUsername();
         return $this->render('login.html.twig', [
-            'last_email' => $lastEmail,
+            'lastEmail' => $lastEmail,
             'error' => $error,
         ]);
     }
 
-    #[Route("/Protected")]
+    #[Route("/protected")]
     public function protected ()
     {
-        return $this->render('Protected.html.twig', [
+        return $this->render('protected.html.twig', [
 
         ]);
     }
+   
 
 }
