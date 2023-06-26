@@ -20,7 +20,7 @@ class MessageController extends AbstractController
   public function index(): Response
   {
 
-    return $this->render('message.html.twig',[
+    return $this->render('message.html.twig', [
       'controller_name' => 'MessageController',
       'message' => $this->rep->findAll(),
     ]);
@@ -48,9 +48,6 @@ class MessageController extends AbstractController
     ]);
   }
 
-
-
-
   #[Route("/delete-message/{id}")]
   public function removeMessage(int $id): Response
   {
@@ -67,10 +64,23 @@ class MessageController extends AbstractController
   }
 
   #[Route("/forum")]
-  public function forum()
+  public function forum(Request $request)
   {
-    return $this->render('forum.html.twig', [
+    $formdata = $request->request->all();
+    /**
+     * @var User
+     */
+    $user = $this->getUser();
 
+    if (!empty($formdata)) {
+      // $message=new Message($formdata['content'],$user->getId());
+
+      $message = new Message($formdata['content'], $user);
+      $this->rep->persist($message);
+      return $this->redirect('/');
+    }
+    return $this->render('forum.html.twig', [
+      'message' => $this->rep->findAll(),
     ]);
   }
 
