@@ -16,7 +16,7 @@ class MessageController extends AbstractController
   {
 
   }
-  #[Route()]
+  #[Route('/')]
   public function index(): Response
   {
 

@@ -6,28 +6,20 @@
 <div class="card mx-auto w-50 mt-5">
     <div class="card-body">
         <form method="post">
-            <h3 class="card-title text-danger shadow-lg bg-info"> Bienvenue dans notre Forum </h3>
+            <h3 class="card-title text-success text-center fs-4"> Bienvenue dans notre Forum </h3>
             {% for item in message %}
-            {# on a mis juste item.id avant de modifier les propietes de class message #}
-            {# <p> <span class="text-warning fw-bold">User Id {{item.id}}</span> :{{item.content}} </p> #}
-
             <p> <span class="text-info fst-italic"> {{item.user.email}}</span> :{{item.content}}
 
-                {# {% if app.user and app.user.id == item.user.id %}
-                <a href="/delete-message/{{item.id}}" class="btn btn-danger">Delete</a>
-                {% endif %} #}
                 {% if app.user and app.user.id == item.user.id %}
                 <a href="/delete-message/{{item.id}}" class="btn btn-danger">Delete</a>
 
-                {% else %}
-                <a href="/repondre-message/{{item.id}}" class="btn btn-danger">Repondre</a>
-
                 {% endif %}
+
             </p>
             {% endfor %}
+
         </form>
     </div>
 </div>
-
 
 {% endblock %}

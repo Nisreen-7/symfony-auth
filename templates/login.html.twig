@@ -7,7 +7,7 @@
 <div class="card mx-auto w-50 mt-5">
     <div class="card-body">
         <form method="post">
-            <h3 class="card-title">LogIn</h3>
+            <h3 class="card-title text-primary">LogIn</h3>
 
             {% if error %}
             <div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -21,11 +21,11 @@
 
 
             {# <input type="hidden" name="_target_path" value="/protected" class="form-control"> #}
-            <button type="submit" class="btn btn-primary mt-3">Login</button>
+            <button type="submit" class="btn btn-info mt-3">Login</button>
         </form>
-        <label for="pasdecompte">Vous n'avez pas un compte chez nous!?</label>
+        <label for="pasdecompte">N'avez-vous pas encore de compte chez nous ?</label>
 
-        <a href="/regiter" class="btn btn-primary">Créer Un Compte</a>
+        <a href="/register" class="btn btn-info">Créer Un Compte</a>
     </div>
 </div>
 {% endblock body %}
